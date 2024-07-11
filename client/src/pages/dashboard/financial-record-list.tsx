@@ -117,7 +117,11 @@ export const FinancialRecordList = () => {
         id: "delete",
         Cell: ({ row }) => (
           <button
-            onClick={() => deleteRecord(row.original._id ?? "")}
+            onClick={() => {
+              if (window.confirm("Are you sure you want to delete this record?")) {
+                deleteRecord(row.original._id ?? "");
+              }
+            }}
             className="button"
           >
             Delete
